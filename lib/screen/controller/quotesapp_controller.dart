@@ -1,41 +1,34 @@
 
 
 import 'package:get/get.dart';
-import 'package:quotes_app/%20utile/database/database_helper.dart';
 import 'package:sqflite/sqflite.dart';
+
+import '../../utils/database/database_helper.dart';
 
 class QuotesController extends GetxController
 {
   RxList categoryList=[].obs;
   RxList quotesList=[].obs;
   List defaultList=["Motivation","Love"];
+  var selectedCategory=  Rxn<String>();
+
 
   Future<void> getCategory()
   async {
     categoryList.value=await DataBaseHelper.dataBaseHelper.readDb();
   }
 
-  Future<void> getQuotes()
+  Future<void> getQuotes({required category})
   async {
-    quotesList.value=await DataBaseHelper.dataBaseHelper.readQuotesDb();
+    quotesList.value=await DataBaseHelper.dataBaseHelper.readQuotesDb(category);
   }
 
-
-  // RxList searchCat=[].obs;
-  // List filterList=[];
-  // void searchCategory(String serch)
-  // {
-  //   if(serch.isEmpty)
-  //     {
-  //       searchCat.value=List.from(categoryList);
-  //       log("=================================================${searchCat.length}");
-  //     }
-  //   else
-  //     {
-  //       for(var x in categoryList)
-  //         {
-  //
-  //         }
-  //     }
+  // Future<void> getQuotes()
+  // async {
+  //   quotesList.value=await DataBaseHelper.dataBaseHelper.readQuotesDb();
   // }
+
+
+
+
 }

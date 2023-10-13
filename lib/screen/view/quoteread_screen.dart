@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quotes_app/%20utile/app_color.dart';
-import 'package:quotes_app/%20utile/app_size.dart';
-import 'package:quotes_app/%20utile/database/database_helper.dart';
+import 'package:quotes_app/utils/app_color.dart';
+import 'package:quotes_app/utils/app_size.dart';
+import 'package:quotes_app/utils/database/database_helper.dart';
 import 'package:quotes_app/screen/controller/quotesapp_controller.dart';
 
-import '../../ utile/decoration/app_decoration.dart';
+import '../../utils/decoration/app_decoration.dart';
 
 class QuotesRead extends StatefulWidget {
   const QuotesRead({super.key});
@@ -16,10 +16,13 @@ class QuotesRead extends StatefulWidget {
 
 class _QuotesReadState extends State<QuotesRead> {
   QuotesController controller=Get.put(QuotesController());
+  String? category;
   @override
   void initState() {
     super.initState();
-    controller.getQuotes();
+    category=Get.arguments;
+    controller.getQuotes(category: category);
+    // controller.getQuotes();
   }
   @override
   Widget build(BuildContext context) {
@@ -29,6 +32,7 @@ class _QuotesReadState extends State<QuotesRead> {
     return SafeArea(child: Scaffold(
       appBar: AppBar(
         title: Text("Quotes"),
+        backgroundColor: Colors.redAccent.shade200,
       ),
       body: Obx(() => ListView.builder(itemBuilder: (context, index) {
           return  Padding(
@@ -42,24 +46,27 @@ class _QuotesReadState extends State<QuotesRead> {
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+
                   SizedBox(height: h*0.05,),
                   Text("${controller.quotesList[index]["quotes"]}\n"),
-                  // Text("fefef"),
+
                   Spacer(),
                   Row(
                     children: [
                       IconButton(onPressed: () {
+
                         DataBaseHelper.dataBaseHelper.deleteQuotes(controller.quotesList[index]["id"]);
-                        controller.getQuotes();
+                        controller.getQuotes(category: category);
+                        // controller.getQuotes();
+
                       }, icon: Icon(Icons.delete,color: redColors,))
                     ],
-                  )
+                  ),
                 ],
               ),
             ),
           );
-        },
-          itemCount: controller.quotesList.length,
+        }, itemCount: controller.quotesList.length,
           // itemCount: 2,
         ),
       ),

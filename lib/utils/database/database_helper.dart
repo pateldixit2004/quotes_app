@@ -75,10 +75,11 @@ class DataBaseHelper
     });
   }
 
-  Future<List> readQuotesDb()
+  Future<List> readQuotesDb(String c)
   async {
     database=await checkDb();
-    String? query="SELECT * FROM $quotesTable";
+    // String? query="SELECT * FROM $quotesTable WHERE $category='$cat'";
+    String query="SELECT * FROM $quotesTable WHERE $category = '$c'";IP4
     List list=await database!.rawQuery(query);
     return list;
   }

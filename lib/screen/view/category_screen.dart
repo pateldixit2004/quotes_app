@@ -1,14 +1,13 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quotes_app/%20utile/app_color.dart';
-import 'package:quotes_app/%20utile/app_size.dart';
-import 'package:quotes_app/%20utile/database/database_helper.dart';
 import 'package:quotes_app/screen/controller/quotesapp_controller.dart';
 import 'package:quotes_app/screen/model/category_model.dart';
 
-import '../../ utile/decoration/app_decoration.dart';
+import '../../utils/app_color.dart';
+import '../../utils/database/database_helper.dart';
+import '../../utils/decoration/app_decoration.dart';
+import '../../utils/app_size.dart';
 
 class CategoryScreen extends StatefulWidget {
   const CategoryScreen({super.key});

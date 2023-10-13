@@ -2,14 +2,14 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:quotes_app/%20utile/app_color.dart';
-import 'package:quotes_app/%20utile/app_size.dart';
-import 'package:quotes_app/%20utile/database/database_helper.dart';
+import 'package:quotes_app/utils/app_color.dart';
+import 'package:quotes_app/utils/app_size.dart';
+import 'package:quotes_app/utils/database/database_helper.dart';
 import 'package:quotes_app/screen/controller/quotesapp_controller.dart';
 import 'package:sizer/sizer.dart';
 
-import '../../ utile/decoration/app_decoration.dart';
-import '../../ utile/textStyle/app_textStyle.dart';
+import '../../utils/decoration/app_decoration.dart';
+import '../../utils/textStyle/app_textStyle.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -70,7 +70,7 @@ class _HomeScreenState extends State<HomeScreen> {
               return GestureDetector(
 
                 onTap: () {
-                  Get.toNamed("/quotes");
+                  Get.toNamed("/quotes",arguments: controller.categoryList[index]['category']);
                 },
                 onDoubleTap: () {
                   print("==================================");

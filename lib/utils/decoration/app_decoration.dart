@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quotes_app/%20utile/textStyle/app_textStyle.dart';
 import 'package:sizer/sizer.dart';
 
 import '../app_color.dart';
